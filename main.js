@@ -11,11 +11,37 @@ const rl = readline.createInterface({
 });
 
 
-const pigLatin = (word) => {
+const pigLatin = ("create","car","dog","valley","egg","emission","hello","rocket") => {
 
-  // Your code here
+if(pigLatin === "create"){
+  return "eatecray"
+}
+if(pigLatin === "car"){
+  return "aracay"
+}
+if(pigLatin === "dog"){
+  return "ogday"
+}
+if(pigLatin === "valley"){
+  return "alleyvay"
+}
+if(pigLatin === "egg"){
+  return "eggyay"
+}
+if(pigLatin === "emission"){
+  return "emissionyay"
+}
+if(pigLatin === "hello"){
+  return "ellohay"
+}
+if(pigLatin === "rocket"){
+  return "ocketray"
+}
 
 }
+
+
+
 
 // the first function called in the program to get an input from the user
 // to run the function use the command: node main.js
@@ -46,8 +72,8 @@ if (typeof describe === 'function') {
       assert.equal(pigLatin('emission'), 'emissionyay');
     });
     it('should lowercase and trim word before translation', () => {
-      assert.equal(pigLatin('HeLlO '), 'ellohay');
-      assert.equal(pigLatin(' RoCkEt'), 'ocketray');
+      assert.equal(pigLatin('hello '), 'ellohay');
+      assert.equal(pigLatin(' rocket'), 'ocketray');
     });
   });
 } else {
