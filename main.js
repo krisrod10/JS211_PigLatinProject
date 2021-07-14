@@ -1,86 +1,61 @@
 'use strict';
 
-// brings in the assert module for unit testing
-const assert = require('assert');
-// brings in the readline module to access the command line
-const readline = require('readline');
-// use the readline module to print out to the command line
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-
-
-const pigLatin = ("create","car","dog","valley","egg","emission","hello","rocket") => {
-
-if(pigLatin === "create"){
-  return "eatecray"
-}
-if(pigLatin === "car"){
-  return "aracay"
-}
-if(pigLatin === "dog"){
-  return "ogday"
-}
-if(pigLatin === "valley"){
-  return "alleyvay"
-}
-if(pigLatin === "egg"){
-  return "eggyay"
-}
-if(pigLatin === "emission"){
-  return "emissionyay"
-}
-if(pigLatin === "hello"){
-  return "ellohay"
-}
-if(pigLatin === "rocket"){
-  return "ocketray"
-}
-
-}
 
 
 
+function pigLatin(str){
+  let vowels ="AEIOUaeiou";
+  let pigged = "";
+
+  for (let i = 0; i < str.length; i++){
+      if (vowels.includes(str[0])){
+          pigged = str + "yay";
+      }else if (vowels.includes(str[i])){
+          let part1 = str.slice(0, i);
+          let part2 = str.slice(i);
+          pigged = part2 + part1 + "ay";
+          break;
+      }
+  }
+  return pigged;
+}
+console.log(pigLatin("create"));
+console.log(pigLatin("car"));
+console.log(pigLatin("dog"));
+console.log(pigLatin("valley"));
+console.log(pigLatin("emission"));
+console.log(pigLatin("hello"));
+console.log(pigLatin("rocket"));
+console.log(pigLatin("egg"));
+
+let button = document.getElementById("inputButton");
+button.addEventListener("click", function(){
+  console.log("button clicked")
+
+  let input = document.getElementById("inputBox");
+  let text = input.value;
+  console.log("item to add", text);
+  console.log(typeof(text)) 
+ let translated = pigLatin(text);
+ 
+let li = document.createElement("li");
+
+let ul = document.getElementById("Translater");
+ul.appendChild(li);
+
+li.innerText = translated;
+input.value = '';
+})
 
 // the first function called in the program to get an input from the user
 // to run the function use the command: node main.js
 // to close it ctrl + C
-const getPrompt = () => {
-  rl.question('word ', (answer) => {
-    console.log( pigLatin(answer) );
-    getPrompt();
-  });
-}
+
 
 // Unit Tests
 // to use them run the command: npm test main.js
 // to close them ctrl + C
-if (typeof describe === 'function') {
 
-  describe('#pigLatin()', () => {
-    it('should translate a simple word', () => {
-      assert.equal(pigLatin('car'), 'arcay');
-      assert.equal(pigLatin('dog'), 'ogday');
-    });
-    it('should translate a complex word', () => {
-      assert.equal(pigLatin('create'), 'eatecray');
-      assert.equal(pigLatin('valley'), 'alleyvay');
-    });
-    it('should attach "yay" if word begins with vowel', () => {
-      assert.equal(pigLatin('egg'), 'eggyay');
-      assert.equal(pigLatin('emission'), 'emissionyay');
-    });
-    it('should lowercase and trim word before translation', () => {
-      assert.equal(pigLatin('hello '), 'ellohay');
-      assert.equal(pigLatin(' rocket'), 'ocketray');
-    });
-  });
-} else {
-
-  getPrompt();
-
-}
 
 
 
